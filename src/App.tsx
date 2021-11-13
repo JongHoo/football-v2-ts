@@ -1,13 +1,18 @@
-import React from 'react';
+import React from 'react'
+import { Route } from 'react-router-dom'
 import Header from './components/Header'
-import './App.css';
+import Standings from './pages/Standings'
+import Fixtures from './pages/Fixtures'
+import './App.css'
 
-function App() {
+function App () {
   return (
     <div className="App">
-      <Header></Header>
+      <Header />
+      <Route path="/Standings" component={Standings} />
+      <Route path="/Fixtures" component={Fixtures} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
