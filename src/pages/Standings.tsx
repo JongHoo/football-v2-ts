@@ -34,7 +34,7 @@ interface ApiResponse {
   data: Array<Standing>
 }
 
-const START_SEASON = 2018
+const START_SEASON = 2014
 
 function getCurrentSeason (): number {
   const today = new Date()
