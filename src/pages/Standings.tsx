@@ -1,6 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
-import { FormControl, Select, MenuItem, InputLabel } from '@mui/material'
+import React, {useEffect, useState} from 'react'
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Paper,
+  Select,
+  SelectChangeEvent,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow
+} from '@mui/material'
 import Axios from 'axios'
 // import testStandingList from '../assets/testData.json'
 
@@ -22,14 +34,22 @@ interface ApiResponse {
   data: Array<Standing>
 }
 
-function Standings() {
+const START_SEASON = 2018
+
+function getCurrentSeason (): number {
+  const today = new Date()
+  return today.getMonth() >= 8 ? today.getFullYear() : today.getFullYear() - 1
+}
+
+function Standings () {
   const [standingList, setStandingList] = useState<Array<Standing>>([])
   const [league, setLeague] = useState<string>('PL')
-  const [season, setSeason] = useState<number>(2021)
+  const [season, setSeason] = useState<string>(getCurrentSeason().toString())
+  const [currentSeason] = useState<number>(getCurrentSeason())
 
   const getStandingList = async () => {
     try {
-      const result: ApiResponse = await Axios.get('https://54s8quvzrl.execute-api.ap-northeast-2.amazonaws.com/dev/standings/PL/2021')
+      const result: ApiResponse = await Axios.get(`https://54s8quvzrl.execute-api.ap-northeast-2.amazonaws.com/dev/standings/${league}/${season}`)
       setStandingList(result.data)
     } catch (err) {
       console.log(err)
@@ -38,25 +58,42 @@ function Standings() {
     // setStandingList(result.data)
   }
 
+  const changeLeague = (event: SelectChangeEvent) => {
+    setLeague(event.target.value)
+  }
+
+  const changeSeason = (event: SelectChangeEvent) => {
+    setSeason(event.target.value)
+  }
+
   useEffect(() => {
     getStandingList()
-  }, [])
+  })
 
   return (
     <div className='content-area'>
       <div className="search-area">
-        <FormControl variant="standard" style={{ marginRight: 10 }}>
+        <FormControl variant="standard" style={{ marginRight: 10, width: 140 }}>
           <InputLabel id="league-select">LEAGUE</InputLabel>
-          <Select labelId="league-select" label="LEAGUE" value={league}>
+          <Select labelId="league-select" label="LEAGUE" value={league} onChange={changeLeague}>
             <MenuItem value={'PL'}>Premier League</MenuItem>
             <MenuItem value={'LALIGA'}>La Liga</MenuItem>
+            <MenuItem value={'SERIEA'}>Serie A</MenuItem>
+            <MenuItem value={'BUNDESLIGA'}>Bundesliga</MenuItem>
+            <MenuItem value={'LIGUE1'}>Ligue 1</MenuItem>
+            <MenuItem value={'EREDIVISIE'}>Eredivisie</MenuItem>
           </Select>
         </FormControl>
-        <FormControl variant="standard">
+        <FormControl variant="standard" style={{ width: 102 }}>
           <InputLabel id="season-select">SEASON</InputLabel>
-          <Select labelId="season-select" label="SEASON" value={season}>
-            <MenuItem value={2021}>2021-2022</MenuItem>
-            <MenuItem value={2020}>2020-2021</MenuItem>
+          <Select labelId="season-select" label="SEASON" value={season} onChange={changeSeason}>
+            {
+              new Array(currentSeason - START_SEASON + 1).fill(0).map((item, index) => (
+                <MenuItem value={(START_SEASON + index).toString()} key={(START_SEASON + index).toString()}>
+                  {START_SEASON + index}-{START_SEASON + index + 1}
+                </MenuItem>
+              ))
+            }
           </Select>
         </FormControl>
       </div>
