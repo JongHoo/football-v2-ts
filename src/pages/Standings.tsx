@@ -68,7 +68,7 @@ function Standings () {
 
   useEffect(() => {
     getStandingList()
-  })
+  }, [league, season])
 
   return (
     <div className='content-area'>
