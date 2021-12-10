@@ -114,6 +114,8 @@ function TopScorers () {
                 <TableCell align="right" style={{ minWidth: 25 }}>득점</TableCell>
                 <TableCell align="right" style={{ minWidth: 25 }}>도움</TableCell>
                 <TableCell align="right" style={{ minWidth: 25 }}>경기</TableCell>
+                <TableCell align="right" style={{ minWidth: 25 }}>PK</TableCell>
+                <TableCell align="left" style={{ minWidth: 25 }}>포지션</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -135,6 +137,8 @@ function TopScorers () {
                     <TableCell align="right">{row.goals || 0}</TableCell>
                     <TableCell align="right">{row.assists || 0}</TableCell>
                     <TableCell align="right">{row.lineups || 0}</TableCell>
+                    <TableCell align="right">{row.penalty || 0}</TableCell>
+                    <TableCell align="left">{row.position || 0}</TableCell>
                   </TableRow>
                 ))
               }
