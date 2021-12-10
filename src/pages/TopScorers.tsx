@@ -14,7 +14,6 @@ import {
   TableHead,
   TableRow
 } from '@mui/material'
-// import testTopScorerList from '../assets/testDataForTopScorers.json'
 
 interface TopScorer {
   teamName: string,
@@ -53,14 +52,9 @@ function TopScorers () {
       const result: ApiResponse = await Axios.get(`https://54s8quvzrl.execute-api.ap-northeast-2.amazonaws.com/dev/topscorers/${league}/${season}`)
       setTopScorerList(result.data)
     } catch (err) {
+      alert('데이터 가져오기 실패')
       console.log(err)
     }
-    // const result: ApiResponse = await new Promise((resolve) => {
-    //   setTimeout(() => {
-    //     resolve(testTopScorerList)
-    //   }, 500)
-    // })
-    // setTopScorerList(result.data)
   }
 
   const changeLeague = (event: SelectChangeEvent) => {

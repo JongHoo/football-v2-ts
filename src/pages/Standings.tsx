@@ -14,7 +14,6 @@ import {
   TableRow
 } from '@mui/material'
 import Axios from 'axios'
-// import testStandingList from '../assets/testData.json'
 
 interface Standing {
   position: number,
@@ -52,10 +51,9 @@ function Standings () {
       const result: ApiResponse = await Axios.get(`https://54s8quvzrl.execute-api.ap-northeast-2.amazonaws.com/dev/standings/${league}/${season}`)
       setStandingList(result.data)
     } catch (err) {
+      alert('데이터 가져오기 실패')
       console.log(err)
     }
-    // const result: ApiResponse = testStandingList
-    // setStandingList(result.data)
   }
 
   const changeLeague = (event: SelectChangeEvent) => {
