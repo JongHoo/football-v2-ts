@@ -72,7 +72,6 @@ function TopScorers () {
   }
 
   useEffect(() => {
-    console.log('aaaa')
     getTopScorerList()
   }, [league, season])
 

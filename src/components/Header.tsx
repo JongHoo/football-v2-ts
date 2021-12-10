@@ -4,7 +4,7 @@ import { Tabs, Tab } from '@mui/material'
 
 function Header () {
   const history = useHistory()
-  const [selectedTab, setSelectedTab] = React.useState('Standings')
+  const [selectedTab, setSelectedTab] = React.useState(window.location.pathname.split('/')[1] || 'Standings')
   const handleChange = (event: React.SyntheticEvent, newSelectedTab: string) => {
     setSelectedTab(newSelectedTab)
     history.push(newSelectedTab)
