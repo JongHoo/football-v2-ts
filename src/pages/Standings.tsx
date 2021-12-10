@@ -1,11 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {
-  FormControl,
-  InputLabel,
-  MenuItem,
   Paper,
-  Select,
-  SelectChangeEvent,
   Table,
   TableBody,
   TableCell,
@@ -14,6 +9,8 @@ import {
   TableRow
 } from '@mui/material'
 import Axios from 'axios'
+import LeagueSelect from '../components/LeagueSelect'
+import SeasonSelect from '../components/SeasonSelect'
 
 interface Standing {
   position: number,
@@ -32,8 +29,6 @@ interface Standing {
 interface ApiResponse {
   data: Array<Standing>
 }
-
-const START_SEASON = 2014
 
 function getCurrentSeason (): number {
   const today = new Date()
@@ -56,12 +51,12 @@ function Standings () {
     }
   }
 
-  const changeLeague = (event: SelectChangeEvent) => {
-    setLeague(event.target.value)
+  const changeLeague = (newLeague: string) => {
+    setLeague(newLeague)
   }
 
-  const changeSeason = (event: SelectChangeEvent) => {
-    setSeason(event.target.value)
+  const changeSeason = (newSeason: string) => {
+    setSeason(newSeason)
   }
 
   useEffect(() => {
@@ -71,29 +66,8 @@ function Standings () {
   return (
     <div className='content-area'>
       <div className="search-area">
-        <FormControl variant="standard" style={{ marginRight: 10, width: 140 }}>
-          <InputLabel id="league-select">LEAGUE</InputLabel>
-          <Select labelId="league-select" label="LEAGUE" value={league} onChange={changeLeague}>
-            <MenuItem value={'PL'}>Premier League</MenuItem>
-            <MenuItem value={'LALIGA'}>La Liga</MenuItem>
-            <MenuItem value={'SERIEA'}>Serie A</MenuItem>
-            <MenuItem value={'BUNDESLIGA'}>Bundesliga</MenuItem>
-            <MenuItem value={'LIGUE1'}>Ligue 1</MenuItem>
-            <MenuItem value={'EREDIVISIE'}>Eredivisie</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl variant="standard" style={{ width: 102 }}>
-          <InputLabel id="season-select">SEASON</InputLabel>
-          <Select labelId="season-select" label="SEASON" value={season} onChange={changeSeason}>
-            {
-              new Array(currentSeason - START_SEASON + 1).fill(0).map((item, index) => (
-                <MenuItem value={(START_SEASON + index).toString()} key={(START_SEASON + index).toString()}>
-                  {START_SEASON + index}-{START_SEASON + index + 1}
-                </MenuItem>
-              ))
-            }
-          </Select>
-        </FormControl>
+        <LeagueSelect selectedLeague={league} onChange={changeLeague} />
+        <SeasonSelect currentSeason={currentSeason} selectedSeason={season} onChangeSeason={changeSeason} />
       </div>
       <div className='table-area'>
         <TableContainer component={Paper} className='dark-table'>
