@@ -24,8 +24,8 @@ h1 {
   justify-content: center;
   margin-top: 20px;
 }
-.table-area .dark-table {
-  /*max-width: 664px;*/
+.table-area th, .table-area td {
+  padding: 6px 10px;
 }
 .table-area .MuiTableCell-root .team-name {
   display: flex;

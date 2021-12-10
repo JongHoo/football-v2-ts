@@ -108,6 +108,7 @@ function TopScorers () {
           <Table stickyHeader size='small'>
             <TableHead>
               <TableRow>
+                <TableCell align="right" />
                 <TableCell align="center">팀</TableCell>
                 <TableCell align="center" style={{ minWidth: 100 }}>이름</TableCell>
                 <TableCell align="right" style={{ minWidth: 25 }}>득점</TableCell>
@@ -117,17 +118,23 @@ function TopScorers () {
             </TableHead>
             <TableBody>
               {
-                topScorerList.map((row) => (
+                topScorerList.map((row, index) => (
                   <TableRow key={row.name}>
-                    <TableCell align="left">
-                      <div className='team-name'>
-                        <img src={row.teamLogo} alt='team logo' />
+                    <TableCell align="right">{index + 1}</TableCell>
+                    <TableCell align="center">
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <img src={row.teamLogo} alt='team logo' style={{ width: 25, height: 25 }} />
                       </div>
                     </TableCell>
-                    <TableCell align="right">{row.name}</TableCell>
-                    <TableCell align="right">{row.goals}</TableCell>
-                    <TableCell align="right">{row.assists}</TableCell>
-                    <TableCell align="right">{row.lineups}</TableCell>
+                    <TableCell align="left">
+                      <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <img src={row.photo} alt={row.name + '_photo'} style={{ width: 25, height: 25, marginRight: 10 }} />
+                        <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', width: 120 }}>{row.name}</div>
+                      </div>
+                    </TableCell>
+                    <TableCell align="right">{row.goals || 0}</TableCell>
+                    <TableCell align="right">{row.assists || 0}</TableCell>
+                    <TableCell align="right">{row.lineups || 0}</TableCell>
                   </TableRow>
                 ))
               }

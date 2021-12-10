@@ -122,7 +122,7 @@ function Standings () {
                     <TableCell align="left">
                       <div className='team-name'>
                         <img src={row.teamLogo} alt='team logo' />
-                        <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', width: 95 }}>{row.teamName}</div>
+                        <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', width: 122 }}>{row.teamName}</div>
                       </div>
                     </TableCell>
                     <TableCell align="right">{row.points}</TableCell>
