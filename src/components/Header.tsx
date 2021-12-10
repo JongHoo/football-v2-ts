@@ -18,7 +18,6 @@ function Header () {
       <Tabs value={selectedTab} onChange={handleChange} textColor="inherit" centered>
         <Tab label="리그순위" value="Standings" />
         <Tab label="개인순위" value="TopScorers" />
-        <Tab label="일정" value="Fixtures" />
       </Tabs>
     </div>
   )
