@@ -4,10 +4,7 @@ import LeagueSelect from '../components/LeagueSelect'
 import SeasonSelect from '../components/SeasonSelect'
 import { TopScorer } from '../interfaces/TopScorer'
 import TopScorerTable from '../components/TopScorerTable'
-
-interface ApiResponse {
-  data: Array<TopScorer>
-}
+import { ApiResponse } from '../interfaces/ApiResponse'
 
 function getCurrentSeason (): number {
   const today = new Date()
@@ -22,7 +19,7 @@ function TopScorers () {
 
   const getTopScorerList = async () => {
     try {
-      const result: ApiResponse = await Axios.get(`https://54s8quvzrl.execute-api.ap-northeast-2.amazonaws.com/dev/topscorers/${league}/${season}`)
+      const result: ApiResponse<TopScorer> = await Axios.get(`https://54s8quvzrl.execute-api.ap-northeast-2.amazonaws.com/dev/topscorers/${league}/${season}`)
       setTopScorerList(result.data)
     } catch (err) {
       alert('데이터 가져오기 실패')
