@@ -1,30 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow
-} from '@mui/material'
 import Axios from 'axios'
 import LeagueSelect from '../components/LeagueSelect'
 import SeasonSelect from '../components/SeasonSelect'
-
-interface Standing {
-  position: number,
-  teamLogo: string,
-  teamName: string,
-  points: number,
-  played: number,
-  win: number,
-  draw: number,
-  lose: number,
-  scores: number,
-  conceded: number,
-  goalsDiff: number
-}
+import StandingTable from '../components/StandingTable'
+import { Standing } from '../components/interfaces/Standing'
 
 interface ApiResponse {
   data: Array<Standing>
@@ -70,47 +49,7 @@ function Standings () {
         <SeasonSelect currentSeason={currentSeason} selectedSeason={season} onChangeSeason={changeSeason} />
       </div>
       <div className='table-area'>
-        <TableContainer component={Paper} className='dark-table'>
-          <Table stickyHeader size='small'>
-            <TableHead>
-              <TableRow>
-                <TableCell align="right" />
-                <TableCell align="center" style={{ minWidth: 135 }}>팀명</TableCell>
-                <TableCell align="right" style={{ minWidth: 25 }}>승점</TableCell>
-                <TableCell align="right" style={{ minWidth: 25 }}>경기</TableCell>
-                <TableCell align="right">승</TableCell>
-                <TableCell align="right">무</TableCell>
-                <TableCell align="right">패</TableCell>
-                <TableCell align="right" style={{ minWidth: 25 }}>득점</TableCell>
-                <TableCell align="right" style={{ minWidth: 25 }}>실점</TableCell>
-                <TableCell align="right" style={{ minWidth: 25 }}>+-</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {
-                standingList.map((row) => (
-                  <TableRow key={row.teamName}>
-                    <TableCell align="right">{row.position}</TableCell>
-                    <TableCell align="left">
-                      <div className='team-name'>
-                        <img src={row.teamLogo} alt='team logo' />
-                        <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', width: 122 }}>{row.teamName}</div>
-                      </div>
-                    </TableCell>
-                    <TableCell align="right">{row.points}</TableCell>
-                    <TableCell align="right">{row.played}</TableCell>
-                    <TableCell align="right">{row.win}</TableCell>
-                    <TableCell align="right">{row.draw}</TableCell>
-                    <TableCell align="right">{row.lose}</TableCell>
-                    <TableCell align="right">{row.scores}</TableCell>
-                    <TableCell align="right">{row.conceded}</TableCell>
-                    <TableCell align="right">{row.goalsDiff}</TableCell>
-                  </TableRow>
-                ))
-              }
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <StandingTable standingList={standingList} />
       </div>
     </div>
   )
