@@ -3,7 +3,7 @@ import Axios from 'axios'
 import LeagueSelect from '../components/LeagueSelect'
 import SeasonSelect from '../components/SeasonSelect'
 import StandingTable from '../components/StandingTable'
-import { Standing } from '../components/interfaces/Standing'
+import { Standing } from '../interfaces/Standing'
 
 interface ApiResponse {
   data: Array<Standing>

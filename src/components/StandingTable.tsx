@@ -1,6 +1,6 @@
 import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from '@mui/material'
 import React from 'react'
-import { Standing } from './interfaces/Standing'
+import { Standing } from '../interfaces/Standing'
 
 interface StandingTableProps {
   standingList: Array<Standing>
