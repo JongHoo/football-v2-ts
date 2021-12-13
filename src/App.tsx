@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Header from './components/Header'
 import Standings from './pages/Standings'
 import TopScorers from './pages/TopScorers'
+import Fixtures from './pages/Fixtures'
 import './App.css'
 
 const theme = createTheme({
@@ -22,6 +23,7 @@ function App () {
         </Route>
         <Route path="/Standings" component={Standings} />
         <Route path="/TopScorers" component={TopScorers} />
+        <Route path="/Fixtures" component={Fixtures} />
       </ThemeProvider>
     </div>
   )
