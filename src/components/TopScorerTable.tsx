@@ -26,7 +26,7 @@ function TopScorerTable ({ topScorerList }: TopScorerTableProps) {
           {
             topScorerList.map((row, index) => (
               <TableRow key={row.name}>
-                <TableCell align="right">{index + 1}</TableCell>
+                <TableCell align="right">{row.rank}</TableCell>
                 <TableCell align="center">
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <img src={row.teamLogo} alt='team logo' style={{ width: 25, height: 25 }} />

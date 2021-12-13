@@ -10,5 +10,6 @@ export interface TopScorer {
   position: string,
   goals: number,
   assists: number | null,
-  penalty: number
+  penalty: number,
+  rank: number
 }

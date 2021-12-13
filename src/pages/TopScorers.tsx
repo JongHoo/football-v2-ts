@@ -20,6 +20,13 @@ function TopScorers () {
   const getTopScorerList = async () => {
     try {
       const result: ApiResponse<TopScorer> = await Axios.get(`https://54s8quvzrl.execute-api.ap-northeast-2.amazonaws.com/dev/topscorers/${league}/${season}`)
+      result.data.forEach((item: TopScorer, index: number) => {
+        if (!index) {
+          item.rank = 1
+          return
+        }
+        item.rank = item.goals === result.data[index - 1].goals ? result.data[index - 1].rank : index + 1
+      })
       setTopScorerList(result.data)
     } catch (err) {
       alert('데이터 가져오기 실패')
