@@ -17,6 +17,9 @@ h1 {
   height: calc(100% - 200px);
   max-width: 664px;
 }
+.search-area {
+  display: flex;
+}
 .table-area {
   height: 100%;
   overflow-y: scroll;
