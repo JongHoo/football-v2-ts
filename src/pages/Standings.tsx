@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import Axios from 'axios'
 import LeagueSelect from '../components/LeagueSelect'
 import SeasonSelect from '../components/SeasonSelect'
 import StandingTable from '../components/StandingTable'
 import { Standing } from '../interfaces/Standing'
 import { ApiResponse } from '../interfaces/ApiResponse'
+import commonApiList from '../api/common'
 
 function getCurrentSeason (): number {
   const today = new Date()
@@ -19,7 +19,7 @@ function Standings () {
 
   const getStandingList = async () => {
     try {
-      const result: ApiResponse<Standing> = await Axios.get(`https://54s8quvzrl.execute-api.ap-northeast-2.amazonaws.com/dev/standings/${league}/${season}`)
+      const result: ApiResponse<Standing> = await commonApiList.getStandingList(league, season)
       setStandingList(result.data)
     } catch (err) {
       alert('데이터 가져오기 실패')

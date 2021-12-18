@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import Axios from 'axios'
 import LeagueSelect from '../components/LeagueSelect'
 import SeasonSelect from '../components/SeasonSelect'
 import { TopScorer } from '../interfaces/TopScorer'
 import TopScorerTable from '../components/TopScorerTable'
 import { ApiResponse } from '../interfaces/ApiResponse'
+import commonApiList from '../api/common'
 
 function getCurrentSeason (): number {
   const today = new Date()
@@ -19,7 +19,7 @@ function TopScorers () {
 
   const getTopScorerList = async () => {
     try {
-      const result: ApiResponse<TopScorer> = await Axios.get(`https://54s8quvzrl.execute-api.ap-northeast-2.amazonaws.com/dev/topscorers/${league}/${season}`)
+      const result: ApiResponse<TopScorer> = await commonApiList.getTopScorerList(league, season)
       result.data.forEach((item: TopScorer, index: number) => {
         if (!index) {
           item.rank = 1

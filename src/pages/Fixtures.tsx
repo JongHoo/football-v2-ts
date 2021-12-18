@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from "react";
-import {ApiResponse} from "../interfaces/ApiResponse";
-import {Standing} from "../interfaces/Standing";
-import Axios from "axios";
-import LeagueSelect from "../components/LeagueSelect";
-import SeasonSelect from "../components/SeasonSelect";
-import TeamSelect from "../components/TeamSelect";
-import FixtureTable from "../components/FixtureTable";
-import {Fixture} from "../interfaces/Fixture";
+import React, {useEffect, useState} from 'react'
+import {ApiResponse} from '../interfaces/ApiResponse'
+import {Standing} from '../interfaces/Standing'
+import LeagueSelect from '../components/LeagueSelect'
+import SeasonSelect from '../components/SeasonSelect'
+import TeamSelect from '../components/TeamSelect'
+import FixtureTable from '../components/FixtureTable'
+import {Fixture} from '../interfaces/Fixture'
+import commonApiList from '../api/common'
 
 function getCurrentSeason (): number {
   const today = new Date()
@@ -23,7 +23,7 @@ function Fixtures () {
 
   const getTeamList = async () => {
     try {
-      const result: ApiResponse<Standing> = await Axios.get(`https://54s8quvzrl.execute-api.ap-northeast-2.amazonaws.com/dev/standings/${league}/${season}`)
+      const result: ApiResponse<Standing> = await commonApiList.getStandingList(league, season)
       const sortedTeamList = result.data.sort((a, b) => a.teamName.localeCompare(b.teamName))
       setTeamList(sortedTeamList)
       setTeam(sortedTeamList[0].teamName)
@@ -35,7 +35,7 @@ function Fixtures () {
 
   const getFixtureList = async () => {
     try {
-      const result: ApiResponse<Fixture> = await Axios.get(`https://54s8quvzrl.execute-api.ap-northeast-2.amazonaws.com/dev/fixtures/${league}/${season}/${team}`)
+      const result: ApiResponse<Fixture> = await commonApiList.getFixtureList(league, season, team)
       setFixtureList(result.data)
     } catch (err) {
       alert('데이터 가져오기 실패')
