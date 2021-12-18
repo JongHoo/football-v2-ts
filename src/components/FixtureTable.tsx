@@ -29,7 +29,7 @@ function FixtureTable ({ fixtureList }: FixtureTableProps) {
               <TableRow key={row.round}>
                 <TableCell align="right">
                   <div className='team-name' style={{ justifyContent: 'flex-end' }}>
-                    <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', width: 122 }}>{row.homeTeam}</div>
+                    <div style={{ width: 85 }}>{row.homeTeam}</div>
                     <img src={row.homeTeamLogo} alt='team logo' style={{ marginLeft: 10, marginRight: 0 }} />
                   </div>
                 </TableCell>
@@ -41,7 +41,7 @@ function FixtureTable ({ fixtureList }: FixtureTableProps) {
                 <TableCell align="left">
                   <div className='team-name'>
                     <img src={row.awayTeamLogo} alt='team logo' />
-                    <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', width: 122 }}>{row.awayTeam}</div>
+                    <div style={{ width: 85 }}>{row.awayTeam}</div>
                   </div>
                 </TableCell>
               </TableRow>
