@@ -6,6 +6,7 @@ import Standings from './pages/Standings'
 import TopScorers from './pages/TopScorers'
 import Fixtures from './pages/Fixtures'
 import './App.css'
+import Loading from './components/Loading'
 
 const theme = createTheme({
   palette: {
@@ -25,6 +26,7 @@ function App () {
         <Route path="/TopScorers" component={TopScorers} />
         <Route path="/Fixtures" component={Fixtures} />
       </ThemeProvider>
+      <Loading isLoading={false} />
     </div>
   )
 }
