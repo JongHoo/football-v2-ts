@@ -5,6 +5,8 @@ import StandingTable from '../components/StandingTable'
 import { Standing } from '../interfaces/Standing'
 import { ApiResponse } from '../interfaces/ApiResponse'
 import commonApiList from '../api/common'
+import { loadingState } from '../recoil/common'
+import { useSetRecoilState } from 'recoil'
 
 function getCurrentSeason (): number {
   const today = new Date()
@@ -16,14 +18,18 @@ function Standings () {
   const [league, setLeague] = useState<string>('PL')
   const [season, setSeason] = useState<string>(getCurrentSeason().toString())
   const [currentSeason] = useState<number>(getCurrentSeason())
+  const setLoading = useSetRecoilState(loadingState)
 
   const getStandingList = async () => {
+    setLoading(true)
     try {
       const result: ApiResponse<Standing> = await commonApiList.getStandingList(league, season)
       setStandingList(result.data)
     } catch (err) {
       alert('데이터 가져오기 실패')
       console.log(err)
+    } finally {
+      setLoading(false)
     }
   }
 

@@ -7,6 +7,8 @@ import TeamSelect from '../components/TeamSelect'
 import FixtureTable from '../components/FixtureTable'
 import {Fixture} from '../interfaces/Fixture'
 import commonApiList from '../api/common'
+import { loadingState } from '../recoil/common'
+import { useSetRecoilState } from 'recoil'
 
 function getCurrentSeason (): number {
   const today = new Date()
@@ -20,8 +22,10 @@ function Fixtures () {
   const [season, setSeason] = useState<string>(getCurrentSeason().toString())
   const [team, setTeam] = useState<string>('')
   const [currentSeason] = useState<number>(getCurrentSeason())
+  const setLoading = useSetRecoilState(loadingState)
 
   const getTeamList = async () => {
+    setLoading(true)
     try {
       const result: ApiResponse<Standing> = await commonApiList.getStandingList(league, season)
       const sortedTeamList = result.data.sort((a, b) => a.teamName.localeCompare(b.teamName))
@@ -30,16 +34,21 @@ function Fixtures () {
     } catch (err) {
       alert('데이터 가져오기 실패')
       console.log(err)
+    } finally {
+      setLoading(false)
     }
   }
 
   const getFixtureList = async () => {
+    setLoading(true)
     try {
       const result: ApiResponse<Fixture> = await commonApiList.getFixtureList(league, season, team)
       setFixtureList(result.data)
     } catch (err) {
       alert('데이터 가져오기 실패')
       console.log(err)
+    } finally {
+      setLoading(false)
     }
   }
 

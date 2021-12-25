@@ -5,6 +5,8 @@ import { TopScorer } from '../interfaces/TopScorer'
 import TopScorerTable from '../components/TopScorerTable'
 import { ApiResponse } from '../interfaces/ApiResponse'
 import commonApiList from '../api/common'
+import { loadingState } from '../recoil/common'
+import { useSetRecoilState } from 'recoil'
 
 function getCurrentSeason (): number {
   const today = new Date()
@@ -16,8 +18,10 @@ function TopScorers () {
   const [league, setLeague] = useState<string>('PL')
   const [season, setSeason] = useState<string>(getCurrentSeason().toString())
   const [currentSeason] = useState<number>(getCurrentSeason())
+  const setLoading = useSetRecoilState(loadingState)
 
   const getTopScorerList = async () => {
+    setLoading(true)
     try {
       const result: ApiResponse<TopScorer> = await commonApiList.getTopScorerList(league, season)
       result.data.forEach((item: TopScorer, index: number) => {
@@ -31,6 +35,8 @@ function TopScorers () {
     } catch (err) {
       alert('데이터 가져오기 실패')
       console.log(err)
+    } finally {
+      setLoading(false)
     }
   }
 

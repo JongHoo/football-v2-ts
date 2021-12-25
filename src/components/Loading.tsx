@@ -1,13 +1,13 @@
 import SyncLoader from 'react-spinners/SyncLoader'
 import React from 'react'
+import { loadingState } from '../recoil/common'
+import { useRecoilState } from 'recoil'
 
-interface LoadingProps {
-  isLoading: boolean
-}
+function Loading () {
+  const [loading] = useRecoilState(loadingState)
 
-function Loading ({ isLoading }: LoadingProps) {
   return (
-    <div style={{ display: isLoading ? 'unset': 'none' }}>
+    <div style={{ display: loading ? 'unset': 'none' }}>
       <div className='loading-screen'>
       </div>
       <div className='spinner-wrapper'>
