@@ -3,7 +3,7 @@ import React from 'react'
 import { TopScorer } from '../interfaces/TopScorer'
 
 interface TopScorerTableProps {
-  topScorerList: Array<TopScorer>
+  topScorerList: TopScorer[]
 }
 
 function TopScorerTable ({ topScorerList }: TopScorerTableProps) {

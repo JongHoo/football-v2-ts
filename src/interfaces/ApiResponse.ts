@@ -1,3 +1,3 @@
 export interface ApiResponse<T> {
-  data: Array<T>
+  data: T[]
 }

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import LeagueSelect from '../components/LeagueSelect'
 import SeasonSelect from '../components/SeasonSelect'
 import StandingTable from '../components/StandingTable'
@@ -14,7 +14,7 @@ function getCurrentSeason (): number {
 }
 
 function Standings () {
-  const [standingList, setStandingList] = useState<Array<Standing>>([])
+  const [standingList, setStandingList] = useState<Standing[]>([])
   const [league, setLeague] = useState<string>('PL')
   const [season, setSeason] = useState<string>(getCurrentSeason().toString())
   const [currentSeason] = useState<number>(getCurrentSeason())

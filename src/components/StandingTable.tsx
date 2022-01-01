@@ -3,7 +3,7 @@ import React from 'react'
 import { Standing } from '../interfaces/Standing'
 
 interface StandingTableProps {
-  standingList: Array<Standing>
+  standingList: Standing[]
 }
 
 function StandingTable ({ standingList }: StandingTableProps) {

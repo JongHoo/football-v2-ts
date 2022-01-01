@@ -3,7 +3,7 @@ import React from 'react'
 import { Fixture } from '../interfaces/Fixture'
 
 interface FixtureTableProps {
-  fixtureList: Array<Fixture>
+  fixtureList: Fixture[]
 }
 
 function formatTime (dateString: string): string {

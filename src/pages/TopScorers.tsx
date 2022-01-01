@@ -14,7 +14,7 @@ function getCurrentSeason (): number {
 }
 
 function TopScorers () {
-  const [topScorerList, setTopScorerList] = useState<Array<TopScorer>>([])
+  const [topScorerList, setTopScorerList] = useState<TopScorer[]>([])
   const [league, setLeague] = useState<string>('PL')
   const [season, setSeason] = useState<string>(getCurrentSeason().toString())
   const [currentSeason] = useState<number>(getCurrentSeason())
