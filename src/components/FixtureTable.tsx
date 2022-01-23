@@ -18,9 +18,9 @@ function FixtureTable ({ fixtureList }: FixtureTableProps) {
       <Table stickyHeader size='small'>
         <TableHead>
           <TableRow>
-            <TableCell align="right" style={{ minWidth: 135 }}>홈팀</TableCell>
-            <TableCell align="center" style={{ minWidth: 70 }}>vs</TableCell>
-            <TableCell align="left" style={{ minWidth: 135 }}>원정팀</TableCell>
+            <TableCell align="right" style={{ width: '40%' }}>홈팀</TableCell>
+            <TableCell align="center" style={{ width: '20%' }}>vs</TableCell>
+            <TableCell align="left" style={{ width: '40%' }}>원정팀</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
