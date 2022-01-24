@@ -1,14 +1,15 @@
-import React, {useEffect, useState} from 'react'
-import {ApiResponse} from '../interfaces/ApiResponse'
-import {Standing} from '../interfaces/Standing'
-import LeagueSelect from '../components/LeagueSelect'
+import React, { useEffect, useState } from 'react'
+import { ApiResponse } from '../interfaces/ApiResponse'
+import { Standing } from '../interfaces/Standing'
 import SeasonSelect from '../components/SeasonSelect'
 import TeamSelect from '../components/TeamSelect'
 import FixtureTable from '../components/FixtureTable'
-import {Fixture} from '../interfaces/Fixture'
+import { Fixture } from '../interfaces/Fixture'
 import commonApiList from '../api/common'
 import { loadingState } from '../recoil/common'
 import { useSetRecoilState } from 'recoil'
+import { Button } from '@mui/material'
+import LeagueButtonGroup from '../components/LeagueButtonGroup'
 
 function getCurrentSeason (): number {
   const today = new Date()
@@ -68,18 +69,15 @@ function Fixtures () {
     getTeamList()
   }, [league, season])
 
-  useEffect(() => {
-    if (team) {
-      getFixtureList()
-    }
-  }, [team])
-
   return (
     <div className='content-area'>
+      <LeagueButtonGroup selectedLeague={league} onChange={changeLeague} />
       <div className="search-area">
-        <LeagueSelect selectedLeague={league} onChange={changeLeague} />
-        <SeasonSelect currentSeason={currentSeason} selectedSeason={season} onChangeSeason={changeSeason} />
-        <TeamSelect selectedTeam={team} teamList={teamList} onChange={changeTeam} />
+        <div>
+          <SeasonSelect currentSeason={currentSeason} selectedSeason={season} onChangeSeason={changeSeason} />
+          <TeamSelect selectedTeam={team} teamList={teamList} onChange={changeTeam} />
+        </div>
+        <Button onClick={getFixtureList}>Search</Button>
       </div>
       <div className='table-area'>
         <FixtureTable fixtureList={fixtureList} />

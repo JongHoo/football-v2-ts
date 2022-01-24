@@ -25,6 +25,7 @@ function FixtureTable ({ fixtureList }: FixtureTableProps) {
         </TableHead>
         <TableBody>
           {
+            fixtureList.length ?
             fixtureList.map((row) => (
               <TableRow key={row.round}>
                 <TableCell align="right">
@@ -45,7 +46,8 @@ function FixtureTable ({ fixtureList }: FixtureTableProps) {
                   </div>
                 </TableCell>
               </TableRow>
-            ))
+            )) :
+              <TableCell colSpan={3} align={'center'}>No Data</TableCell>
           }
         </TableBody>
       </Table>
