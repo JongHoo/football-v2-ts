@@ -10,7 +10,7 @@ const START_SEASON = 2014
 
 function SeasonSelect ({currentSeason, selectedSeason, onChangeSeason}: SeasonSelectProps) {
   return (
-    <FormControl variant="standard" style={{ marginRight: 10, width: 102 }}>
+    <FormControl variant="standard" style={{ marginRight: 10, width: 106 }}>
       <InputLabel id="season-select">SEASON</InputLabel>
       <Select labelId="season-select" label="SEASON" value={selectedSeason} onChange={(event) => onChangeSeason(event.target.value)}>
         {

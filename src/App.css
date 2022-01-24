@@ -30,19 +30,27 @@ h1 {
   margin: 0;
 }
 .content-area {
-  margin: 20px auto;
-  height: calc(100% - 200px);
+  margin: auto;
+  height: calc(100% - 250px);
   max-width: 664px;
+}
+.league_select_group {
+  width: 100%;
+}
+.league_select_group button{
+  display: flex;
+  flex: 1;
 }
 .search-area {
   display: flex;
+  justify-content: space-between;
 }
 .table-area {
   height: 100%;
   overflow-y: scroll;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .table-area th, .table-area td {
   padding: 6px 10px;
