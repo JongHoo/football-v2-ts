@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import LeagueSelect from '../components/LeagueSelect'
 import SeasonSelect from '../components/SeasonSelect'
 import { TopScorer } from '../interfaces/TopScorer'
 import TopScorerTable from '../components/TopScorerTable'
@@ -7,6 +6,8 @@ import { ApiResponse } from '../interfaces/ApiResponse'
 import commonApiList from '../api/common'
 import { loadingState } from '../recoil/common'
 import { useSetRecoilState } from 'recoil'
+import LeagueButtonGroup from '../components/LeagueButtonGroup'
+import { Button } from '@mui/material'
 
 function getCurrentSeason (): number {
   const today = new Date()
@@ -50,13 +51,14 @@ function TopScorers () {
 
   useEffect(() => {
     getTopScorerList()
-  }, [league, season])
+  }, [])
 
   return (
     <div className='content-area'>
+      <LeagueButtonGroup selectedLeague={league} onChange={changeLeague} />
       <div className="search-area">
-        <LeagueSelect selectedLeague={league} onChange={changeLeague} />
         <SeasonSelect currentSeason={currentSeason} selectedSeason={season} onChangeSeason={changeSeason} />
+        <Button onClick={getTopScorerList}>Search</Button>
       </div>
       <div className='table-area'>
         <TopScorerTable topScorerList={topScorerList} />
