@@ -48,7 +48,7 @@ function FixtureTable ({ fixtureList }: FixtureTableProps) {
               </TableRow>
             )) :
               <TableRow>
-                <TableCell colSpan={3} align={'center'}>No Data</TableCell>
+                <TableCell colSpan={3} align={'center'}>Press Search button</TableCell>
               </TableRow>
           }
         </TableBody>
