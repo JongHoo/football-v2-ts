@@ -44,14 +44,13 @@ function Standings () {
 
   useEffect(() => {
     getStandingList()
-  }, [])
+  }, [league, season])
 
   return (
     <div className='content-area'>
       <LeagueButtonGroup selectedLeague={league} onChange={changeLeague} />
       <div className="search-area">
         <SeasonSelect currentSeason={currentSeason} selectedSeason={season} onChangeSeason={changeSeason} />
-        <Button onClick={getStandingList}>Search</Button>
       </div>
       <div className='table-area'>
         <StandingTable standingList={standingList} />
