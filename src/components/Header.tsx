@@ -13,7 +13,7 @@ function Header () {
   return (
     <div className="header">
       <div className="title-area">
-        <h1>해축해축</h1>
+        <h1>⚽ ️해축해축 ⚽️</h1>
       </div>
       <Tabs value={selectedTab} onChange={handleChange} textColor="inherit" centered>
         <Tab label="리그순위" value="Standings" />
