@@ -30,6 +30,7 @@ function Fixtures () {
     try {
       const result: ApiResponse<Standing> = await commonApiList.getStandingList(league, season)
       const sortedTeamList = result.data.sort((a, b) => a.teamName.localeCompare(b.teamName))
+      setTeam('')
       setTeamList(sortedTeamList)
       setTeam(sortedTeamList[0].teamName)
     } catch (err) {
