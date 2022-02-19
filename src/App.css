@@ -2,7 +2,7 @@
   background: #0A1929;
   color: white;
   padding: 20px;
-  height: calc(100vh - 40px);
+  height: calc(var(--vh, 1vh) * 100 - 40px);
 }
 .loading-screen {
   height: 100vh;
@@ -47,8 +47,7 @@ h1 {
   justify-content: space-between;
 }
 .table-area {
-  height: 100%;
-  overflow-y: scroll;
+  max-height: 100%;
   display: flex;
   justify-content: center;
   margin-top: 10px;

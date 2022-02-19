@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Football Statistics
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+해축해축 프론트엔드
 
 ## Available Scripts
 
