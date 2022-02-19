@@ -7,7 +7,7 @@ import TopScorers from './pages/TopScorers'
 import Fixtures from './pages/Fixtures'
 import Loading from './components/Loading'
 import './App.css'
-import {RecoilRoot} from "recoil";
+import { RecoilRoot } from "recoil"
 
 const theme = createTheme({
   palette: {
