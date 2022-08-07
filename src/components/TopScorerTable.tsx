@@ -6,6 +6,10 @@ interface TopScorerTableProps {
   topScorerList: TopScorer[]
 }
 
+function formatPosition (position: string) {
+  return position === 'Attacker' ? 'Foward' : position
+}
+
 function TopScorerTable ({ topScorerList }: TopScorerTableProps) {
   return (
     <TableContainer component={Paper} className='dark-table'>
@@ -35,14 +39,14 @@ function TopScorerTable ({ topScorerList }: TopScorerTableProps) {
                 <TableCell align="left">
                   <div style={{ display: 'flex', alignItems: 'center' }}>
                     {/*<img src={row.photo} alt={row.name + '_photo'} style={{ width: 25, height: 25, marginRight: 10 }} />*/}
-                    <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', width: 120 }}>{row.name}</div>
+                    <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row.name}</div>
                   </div>
                 </TableCell>
                 <TableCell align="right">{row.goals || 0}</TableCell>
                 <TableCell align="right">{row.assists || 0}</TableCell>
                 <TableCell align="right">{row.lineups || 0}</TableCell>
                 <TableCell align="right">{row.penalty || 0}</TableCell>
-                <TableCell align="left">{row.position || 0}</TableCell>
+                <TableCell align="left">{formatPosition(row.position) || '-'}</TableCell>
               </TableRow>
             ))
           }
