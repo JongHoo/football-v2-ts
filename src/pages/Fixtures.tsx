@@ -10,11 +10,7 @@ import { loadingState } from '../recoil/common'
 import { useSetRecoilState } from 'recoil'
 import { Button } from '@mui/material'
 import LeagueButtonGroup from '../components/LeagueButtonGroup'
-
-function getCurrentSeason (): number {
-  const today = new Date()
-  return today.getMonth() >= 8 ? today.getFullYear() : today.getFullYear() - 1
-}
+import { getCurrentSeason } from '../util/commonUtil'
 
 function Fixtures () {
   const [teamList, setTeamList] = useState<Standing[]>([])

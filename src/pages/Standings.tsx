@@ -7,11 +7,7 @@ import commonApiList from '../api/common'
 import { loadingState } from '../recoil/common'
 import { useSetRecoilState } from 'recoil'
 import LeagueButtonGroup from '../components/LeagueButtonGroup'
-
-function getCurrentSeason (): number {
-  const today = new Date()
-  return today.getMonth() >= 8 ? today.getFullYear() : today.getFullYear() - 1
-}
+import { getCurrentSeason } from '../util/commonUtil'
 
 function Standings () {
   const [standingList, setStandingList] = useState<Standing[]>([])
