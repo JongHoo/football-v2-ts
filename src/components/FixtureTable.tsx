@@ -29,8 +29,8 @@ function FixtureTable ({ fixtureList }: FixtureTableProps) {
             fixtureList.map((row) => (
               <TableRow key={row.round}>
                 <TableCell align="right">
-                  <div className='team-name' style={{ justifyContent: 'flex-end' }}>
-                    <div style={{ width: 85 }}>{row.homeTeam}</div>
+                  <div className='team-with-image' style={{ justifyContent: 'flex-end' }}>
+                    <div>{row.homeTeam}</div>
                     <img src={row.homeTeamLogo} alt='team logo' style={{ marginLeft: 10, marginRight: 0 }} />
                   </div>
                 </TableCell>
@@ -40,9 +40,9 @@ function FixtureTable ({ fixtureList }: FixtureTableProps) {
                   <div className='round-info'>{formatTime(row.date)}</div>
                 </TableCell>
                 <TableCell align="left">
-                  <div className='team-name'>
+                  <div className='team-with-image'>
                     <img src={row.awayTeamLogo} alt='team logo' />
-                    <div style={{ width: 85 }}>{row.awayTeam}</div>
+                    <div>{row.awayTeam}</div>
                   </div>
                 </TableCell>
               </TableRow>

@@ -13,15 +13,16 @@ function StandingTable ({ standingList }: StandingTableProps) {
         <TableHead>
           <TableRow>
             <TableCell align="right" />
-            <TableCell align="center" style={{ minWidth: 135 }}>팀명</TableCell>
-            <TableCell align="right" style={{ minWidth: 25 }}>승점</TableCell>
-            <TableCell align="right" style={{ minWidth: 25 }}>경기</TableCell>
-            <TableCell align="right">승</TableCell>
-            <TableCell align="right">무</TableCell>
-            <TableCell align="right">패</TableCell>
-            <TableCell align="right" style={{ minWidth: 25 }}>득점</TableCell>
-            <TableCell align="right" style={{ minWidth: 25 }}>실점</TableCell>
-            <TableCell align="right" style={{ minWidth: 25 }}>+-</TableCell>
+            <TableCell align="center" />
+            <TableCell align="center">팀명</TableCell>
+            <TableCell align="center" style={{ minWidth: 25 }}>승점</TableCell>
+            <TableCell align="center" style={{ minWidth: 25 }}>경기</TableCell>
+            <TableCell align="center">승</TableCell>
+            <TableCell align="center">무</TableCell>
+            <TableCell align="center">패</TableCell>
+            <TableCell align="center" style={{ minWidth: 25 }}>득점</TableCell>
+            <TableCell align="center" style={{ minWidth: 25 }}>실점</TableCell>
+            <TableCell align="center" style={{ minWidth: 25 }}>+-</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -29,20 +30,22 @@ function StandingTable ({ standingList }: StandingTableProps) {
             standingList.map((row) => (
               <TableRow key={row.teamName}>
                 <TableCell align="right">{row.position}</TableCell>
-                <TableCell align="left">
-                  <div className='team-name'>
-                    <img src={row.teamLogo} alt='team logo' />
-                    <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', width: 122 }}>{row.teamName}</div>
+                <TableCell align="center">
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <img src={row.teamLogo} alt='team logo' style={{ width: 25, height: 25 }} />
                   </div>
                 </TableCell>
-                <TableCell align="right">{row.points}</TableCell>
-                <TableCell align="right">{row.played}</TableCell>
-                <TableCell align="right">{row.win}</TableCell>
-                <TableCell align="right">{row.draw}</TableCell>
-                <TableCell align="right">{row.lose}</TableCell>
-                <TableCell align="right">{row.scores}</TableCell>
-                <TableCell align="right">{row.conceded}</TableCell>
-                <TableCell align="right">{row.goalsDiff}</TableCell>
+                <TableCell align="left">
+                  <div className='name-cell team-name'>{row.teamName}</div>
+                </TableCell>
+                <TableCell align="center">{row.points}</TableCell>
+                <TableCell align="center">{row.played}</TableCell>
+                <TableCell align="center">{row.win}</TableCell>
+                <TableCell align="center">{row.draw}</TableCell>
+                <TableCell align="center">{row.lose}</TableCell>
+                <TableCell align="center">{row.scores}</TableCell>
+                <TableCell align="center">{row.conceded}</TableCell>
+                <TableCell align="center">{row.goalsDiff}</TableCell>
               </TableRow>
             ))
           }
