@@ -23,7 +23,7 @@ function TopScorerTable ({ topScorerList }: TopScorerTableProps) {
             <TableCell align="center" style={{ minWidth: 25 }}>도움</TableCell>
             <TableCell align="center" style={{ minWidth: 25 }}>경기</TableCell>
             <TableCell align="center" style={{ minWidth: 25 }}>PK</TableCell>
-            <TableCell align="center" style={{ minWidth: 25 }}>포지션</TableCell>
+            <TableCell align="left" style={{ minWidth: 25 }}>포지션</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

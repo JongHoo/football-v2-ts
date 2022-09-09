@@ -1,8 +1,5 @@
 .App {
-  background: #0A1929;
-  color: white;
   padding: 20px;
-  height: calc(var(--vh, 1vh) * 100 - 40px);
 }
 .loading-screen {
   height: 100vh;
@@ -47,7 +44,7 @@ h1 {
   justify-content: space-between;
 }
 .table-area {
-  max-height: 100%;
+  height: calc(100vh - 280px);
   display: flex;
   justify-content: center;
   margin-top: 10px;
