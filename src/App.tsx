@@ -22,11 +22,11 @@ function App () {
         <ThemeProvider theme={theme}>
           <Header />
           <Route exact path="/">
-            <Redirect to="/Standings" />
+            <Redirect to="/standings" />
           </Route>
-          <Route path="/Standings" component={Standings} />
-          <Route path="/TopScorers" component={TopScorers} />
-          <Route path="/Fixtures" component={Fixtures} />
+          <Route path="/standings" component={Standings} />
+          <Route path="/topScorers" component={TopScorers} />
+          <Route path="/fixtures" component={Fixtures} />
         </ThemeProvider>
         <Loading />
       </RecoilRoot>
