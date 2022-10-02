@@ -25,7 +25,7 @@ function App () {
             <Redirect to="/standings" />
           </Route>
           <Route path="/standings" component={Standings} />
-          <Route path="/topScorers" component={TopScorers} />
+          <Route path="/top-scorers" component={TopScorers} />
           <Route path="/fixtures" component={Fixtures} />
         </ThemeProvider>
         <Loading />
